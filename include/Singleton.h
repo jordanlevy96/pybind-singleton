@@ -5,20 +5,19 @@
 class Singleton
 {
 public:
-    static Singleton &GetInstance()
-    {
-        static Singleton instance;
-        return instance;
-    }
+    static Singleton &GetInstance();
 
     Singleton(Singleton const &) = delete;
     void operator=(Singleton const &) = delete;
     std::string test;
 
     void Init();
-
     void PrintTest();
 
 private:
-    Singleton(){};
+    Singleton() {};
 };
+
+// Global singleton instance - shared across all modules
+extern Singleton *g_singleton_instance;
+extern Singleton *GetGlobalSingleton();
